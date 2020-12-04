@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RedCarpetUpAssignment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="click_here">Click here!</string>
+    <string name="if_you_want_to_see_the_full_article">if you want to see the full article -</string>
 </resources>
