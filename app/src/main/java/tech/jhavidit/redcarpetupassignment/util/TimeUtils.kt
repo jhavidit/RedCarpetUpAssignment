@@ -31,7 +31,7 @@ fun getPeriod(past: Date): String {
 
 @SuppressLint("SimpleDateFormat")
 fun String.toDateFormat(): Date? {
-    return SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+    return SimpleDateFormat("dd-MM/yyyy HH:mm:ss")
         .parse(this)
 }
 
