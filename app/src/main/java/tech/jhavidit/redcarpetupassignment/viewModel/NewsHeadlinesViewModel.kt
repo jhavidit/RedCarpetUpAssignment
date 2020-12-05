@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import tech.jhavidit.redcarpetupassignment.model.NewsItem
 import tech.jhavidit.redcarpetupassignment.repository.NewsHeadlinesRepository
 
-class NewsHeadlinesViewModel(newsHeadlinesRepository: NewsHeadlinesRepository) :
+class NewsHeadlinesViewModel( newsHeadlinesRepository: NewsHeadlinesRepository) :
     ViewModel() {
      lateinit var newsHeadlinesRepository : NewsHeadlinesRepository
     val showNewsHeadlines: LiveData<NewsItem>
