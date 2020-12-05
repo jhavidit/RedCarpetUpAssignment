@@ -30,6 +30,7 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.title = "Headline Details"
         navController = Navigation.findNavController(view)
         val author = "Published at - " + arguments?.getString("author")
         val description = arguments?.getString("description")

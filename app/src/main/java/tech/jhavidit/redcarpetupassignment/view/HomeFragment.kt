@@ -14,6 +14,7 @@ import tech.jhavidit.redcarpetupassignment.R
 import tech.jhavidit.redcarpetupassignment.adapter.NewsHeadlinesAdapter
 import tech.jhavidit.redcarpetupassignment.databinding.FragmentHomeBinding
 import tech.jhavidit.redcarpetupassignment.viewModel.NewsHeadlinesViewModel
+import tech.jhavidit.redcarpetupassignment.viewModel.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
@@ -31,7 +32,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(NewsHeadlinesViewModel::class.java)
+        activity?.title = "News Headlines"
+        val viewModelFactory = ViewModelFactory()
+        viewModel =
+            ViewModelProvider(this, viewModelFactory).get(NewsHeadlinesViewModel::class.java)
         adapter = NewsHeadlinesAdapter(requireContext())
         getData()
     }
@@ -40,10 +44,13 @@ class HomeFragment : Fragment() {
         viewModel.getNewsHeadlines()
         binding.recyclerView.adapter = adapter
         viewModel.showProgress.observe(viewLifecycleOwner, Observer {
-            if (it)
+            if (it) {
                 binding.progressBar.visibility = VISIBLE
-            else
+                binding.recyclerView.visibility = GONE
+            } else {
                 binding.progressBar.visibility = GONE
+                binding.recyclerView.visibility = VISIBLE
+            }
         })
         viewModel.showNewsHeadlines.observe(viewLifecycleOwner, Observer {
             adapter.setMusicItem(it.articles!!)

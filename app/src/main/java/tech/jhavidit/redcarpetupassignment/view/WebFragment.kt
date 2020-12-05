@@ -28,6 +28,7 @@ class WebFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.title = "Complete Article"
         val link = arguments?.getString("url")
         binding.webview.webViewClient = WebViewClient()
         binding.webview.settings.javaScriptEnabled = true

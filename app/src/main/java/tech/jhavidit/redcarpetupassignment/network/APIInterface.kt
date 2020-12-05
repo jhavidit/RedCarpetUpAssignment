@@ -1,6 +1,5 @@
 package tech.jhavidit.redcarpetupassignment.network
 
-import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header

@@ -37,6 +37,10 @@ android {
         // for view binding :
         viewBinding = true
     }
+    kapt
+            {
+                generateStubs = true
+            }
 }
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
@@ -134,14 +138,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 
-
     implementation "com.airbnb.android:lottie:3.4.1"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    def daggerVer = 2.27 // or latest version
 
-    def dagger_version = '2.17'
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$daggerVer"
+    implementation "com.google.dagger:dagger-android-support:$daggerVer"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
 
+    implementation 'org.mockito:mockito-core:3.0.0'
+    implementation 'org.mockito:mockito-inline:3.0.0'
 
 
 }
