@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="tech.jhavidit.redcarpetupassignment.view.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Headlines"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="tech.jhavidit.redcarpetupassignment.view.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
+        android:label="Artcile Details"
+        tools:layout="@layout/fragment_details">
         <action
             android:id="@+id/action_detailsFragment_to_webFragment"
             app:destination="@id/webFragment" />
@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="tech.jhavidit.redcarpetupassignment.view.WebFragment"
-        android:label="fragment_web"
+        android:label="Complete Article"
         tools:layout="@layout/fragment_web" />
 </navigation>

@@ -15,6 +15,9 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.news_item.view.*
 import tech.jhavidit.redcarpetupassignment.R
 import tech.jhavidit.redcarpetupassignment.model.Article
+import tech.jhavidit.redcarpetupassignment.util.getPeriod
+import tech.jhavidit.redcarpetupassignment.util.globalTimeDateFormat
+import tech.jhavidit.redcarpetupassignment.util.toDateFormat
 
 class NewsHeadlinesAdapter(private val context: Context) :
     RecyclerView.Adapter<NewsHeadlinesAdapter.ViewHolder>() {
@@ -47,9 +50,25 @@ class NewsHeadlinesAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var item = list[position]
         holder.articleHeadline.text = item.title
-        holder.articleAuthor.text = item.author
-        val publish = "Published at : " + item.publishedAt
+
+        var publish = item.publishedAt
+        var author = item.author
+        if(author.isNullOrEmpty())
+        {
+            author = "Publisher unknown"
+        }
+        holder.articleAuthor.text = author
+        if(!publish.isNullOrEmpty())
+        {
+            publish = getPeriod(globalTimeDateFormat(publish)!!)
+        }
+        if(!publish.isNullOrEmpty())
+
+         publish = "Published : $publish"
+        else
+            publish = "Published : Unknown"
         holder.date.text = publish
+
         Glide.with(context)
             .load(item.urlToImage)
             .into(holder.articleImage)

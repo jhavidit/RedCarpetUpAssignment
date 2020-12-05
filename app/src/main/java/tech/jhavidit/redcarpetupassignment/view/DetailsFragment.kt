@@ -13,6 +13,8 @@ import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import tech.jhavidit.redcarpetupassignment.R
 import tech.jhavidit.redcarpetupassignment.databinding.FragmentDetailsBinding
+import tech.jhavidit.redcarpetupassignment.util.getPeriod
+import tech.jhavidit.redcarpetupassignment.util.globalTimeDateFormat
 
 
 class DetailsFragment : Fragment() {
@@ -32,19 +34,22 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.title = "Headline Details"
         navController = Navigation.findNavController(view)
-        val author = "Published at - " + arguments?.getString("author")
+        var author = "Publisher - " + arguments?.getString("author","Unknown")
         val description = arguments?.getString("description")
         val title = arguments?.getString("title")
         val source = arguments?.getString("source")
         val url = arguments?.getString("url")
         val photo = arguments?.getString("photo")
-        val date = "Published by - " + arguments?.getString("date")
+        var date = arguments?.getString("date")
+        date = "Published : " + getPeriod(globalTimeDateFormat(date!!)!!)
+
         binding.articleHeading.text = title
         binding.author.text = author
         binding.date.text = date
         binding.summary.text = description
         Glide.with(requireContext()).load(photo)
             .into(binding.articlePhoto)
+
 
         binding.webView.setOnClickListener {
             val bundle = bundleOf("url" to url)
